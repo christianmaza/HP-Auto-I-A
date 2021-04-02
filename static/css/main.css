@@ -1,0 +1,385 @@
+nav {
+  position: sticky !important;
+  width: 100%;
+  z-index: 1000;
+  top: 0px;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+label {
+  color: rgb(161, 161, 161);
+  transition: color 0.16s linear;
+}
+
+input:checked + label {
+  color: rgb(0, 0, 0);
+  transition: color 0.16s linear;
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fileInputWrap {
+  margin-right: 11vw;
+}
+
+.customFileInput {
+  background: rgb(248, 249, 250);
+  border-radius: 5px;
+  width: 210px;
+  font-size: 0.875rem;
+  max-width: 230px;
+  color: rgb(0, 0, 0);
+  margin-top: 2px;
+}
+
+.customFileInput::-webkit-file-upload-button {
+  background: rgb(248, 249, 250);
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 1rem;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.customFileInput::-webkit-file-upload-button:hover {
+  border: 1px solid rgb(47, 103, 255);
+  color: rgb(47, 103, 255);
+  transition: border 0.16s ease-in-out, color 0.16s ease-in-out;
+}
+
+.customFileInput::-webkit-file-upload-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fileSubmitArrowDisabled {
+  fill: rgb(174, 174, 174);
+}
+
+.fileSubmitArrow {
+  fill: rgb(0, 0, 0);
+  transition: fill 0.16s ease-in-out;
+}
+
+.fileSubmitArrow:hover {
+  fill: rgb(47, 103, 255);
+}
+
+.addPartRow {
+  display: inline-block;
+}
+
+.addPartRow svg {
+  fill: rgb(174, 174, 174);
+  cursor: pointer;
+  transition: fill 0.16s ease-in-out;
+}
+
+.addPartPlus:hover {
+  fill: rgb(47, 103, 255);
+  transition: fill 0.16s ease-in-out;
+}
+
+.materialLegend {
+  color: rgb(174, 174, 174);
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 100;
+  margin-left: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.estimateAcknowledgement {
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-align: justify;
+}
+
+.variousAcknowledgement {
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.74rem;
+  text-align: justify;
+}
+
+.estimateAckCheck {
+  display: inline-block;
+  position: absolute;
+  margin-top: 0.2rem;
+}
+
+.estimateAckLabel {
+  margin-left: 1.5rem;
+  display: inline-block;
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  text-align: justify;
+}
+
+.logoText {
+  display: inline-block;
+  text-align: center;
+  font-family: Dosis, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  font-size: 4.3rem;
+}
+
+.subTitle {
+  display: inline;
+  font-size: 1.25rem;
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 300;
+  color: rgb(100, 100, 100);
+}
+
+.banner {
+  padding-left: 9.5vh !important;
+  padding-right: 9.5vh !important;
+  padding-top: 9.5vh !important;
+  padding-bottom: 9.5vh !important;
+  background-color: rgb(248, 248, 248);
+  margin-bottom: 9.5vh !important;
+}
+
+.logoWrapper {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgb(179, 177, 177);
+}
+
+.contactInfoWrapper {
+  margin-top: 1.7rem;
+}
+
+.contactInfo {
+  padding-bottom: 0.18rem;
+  color: rgb(167, 165, 165);
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+
+.contactInfoLicense {
+  padding-top: 0.25rem;
+  padding-bottom: 0.18rem;
+  color: rgb(161, 161, 161);
+}
+
+.custInfoHeading {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 1.15rem;
+}
+
+.leftForm {
+  border-right: 1px solid rgb(189, 185, 185);
+  border-bottom: 1px solid rgb(189, 185, 185);
+}
+
+.spaceLeftSmall {
+  margin-left: 1.5rem;
+}
+
+.formSpacerSmaller {
+  width: 100% !important;
+  margin-top: 5rem;
+}
+
+.formSpacerLarger {
+  width: 100% !important;
+  margin-top: 4.59rem;
+}
+
+.formSpacerSeperator {
+  width: auto !important;
+  margin-top: 3.4rem !important;
+  margin-bottom: 3.4rem !important;
+  margin-left: 3rem !important;
+  height: 1px;
+  background: rgb(189, 185, 185);
+}
+
+.formSpacerSeperatorSmaller {
+  width: 91%;
+  margin-top: 3.6rem !important;
+  margin-bottom: 3.4rem !important;
+  margin-right: 3rem !important;
+  height: 1px;
+  background: rgb(189, 185, 185);
+}
+
+.formItem {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+.formItemGuarantee {
+  position: relative;
+}
+
+.formItemRadio {
+  display: inline-block;
+  margin-left: 0.45rem;
+}
+
+.formItemCheck {
+  margin-left: 1rem;
+  display: inline-block;
+}
+
+.requiredAsterisk {
+  color: red;
+  font-size: 0.6rem;
+  font-family: Dosis, Helvetica, sans-serif;
+  vertical-align: super;
+}
+
+.inputTextRequired {
+  display: block;
+  width: 75%;
+  height: 30px;
+  font-family: Dosis, Helvetica, sans-serif;
+  font-weight: 300;
+  border: none;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid rgb(179, 177, 177);
+}
+
+.inputTextRequiredLarger {
+  display: block;
+  width: 95%;
+  height: 30px;
+  font-family: Dosis, Helvetica, sans-serif;
+  font-weight: 300;
+  border: none;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid rgb(179, 177, 177);
+}
+
+.totalLabel {
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+.grand {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.col-4 .inputTextRequiredLarger {
+  height: 1.4rem;
+  margin-bottom: 0rem;
+}
+
+.inputNumberRequiredLarger {
+  display: block;
+  width: 100%;
+  height: 30px;
+  font-family: Dosis, Helvetica, sans-serif;
+  font-weight: 300;
+  border: none;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid rgb(179, 177, 177);
+}
+
+.inputTextRequired,
+.inputTextRequiredLarger,
+.inputNumberRequiredLarger:focus {
+  outline: none;
+}
+
+.labelTextUp {
+  position: absolute;
+  font-size: 0.6rem;
+  top: -11px;
+  transition: font-size 0.2s linear, top 0.2s linear, color 0.2s linear;
+  color: rgb(24, 24, 24);
+}
+
+.labelText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: font-size 0.2s linear, top 0.2s linear, color 0.2s linear;
+  color: rgb(161, 161, 161);
+}
+
+.labelTextSmall {
+  position: absolute;
+  font-size: 0.875rem;
+  top: 0.2rem;
+  left: 0;
+  transition: font-size 0.2s linear, top 0.2s linear, color 0.2s linear;
+  color: rgb(161, 161, 161);
+}
+
+span .inputTextRequiredLarger {
+  display: inline-block !important;
+  width: 35%;
+  margin-bottom: auto;
+  height: 0.94rem;
+}
+
+span #noReturnInitial {
+  display: inline-block !important;
+  width: 10%;
+  margin-bottom: auto;
+  height: 0.94rem;
+}
+
+span #teardownFee {
+  width: 15%;
+}
+
+input[id*="guaranteedItem"] {
+  height: 1rem;
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+label[for="guaranteedItemsMileage"],
+label[for="guaranteedItemsTime"] {
+  font-family: Roboto Condensed, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  line-height: 0.55rem;
+}
+
+.disabledPointer {
+  pointer-events: none;
+}
+
+.lightgrayBg {
+  background-color: rgb(248, 249, 250);
+}
+
+.equalizer {
+  padding-bottom: 0.43rem;
+}
+
+.textDark {
+  color: black;
+}
