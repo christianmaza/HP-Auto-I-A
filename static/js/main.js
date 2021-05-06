@@ -3,76 +3,75 @@ let recommendationCounter = 0;
 let hazardCounter = 0;
 let guaranteeCounter = 0;
 
-returnFromSplitFloat = (splitString) =>{
+returnFromSplitFloat = (splitString) => {
     //if split function removed "$" from the string, the array returned will be > 1
-    if((splitString.length > 1)){ 
+    if ((splitString.length > 1)) {
         return `${parseFloat(splitString[1]).toFixed(2)}`;
     }
-    else{
+    else {
         return `${parseFloat(splitString[0]).toFixed(2)}`;
     }
 }
 
-getTotals = (collection, affectedElement) =>{
+getTotals = (collection, affectedElement) => {
     let tempTotal = 0;
-    Array.prototype.forEach.call(collection, function(totalInput){
+    Array.prototype.forEach.call(collection, function (totalInput) {
         let totalInputVal = parseFloat(returnFromSplitFloat(totalInput.value.split("$")));
-        if(!isNaN(totalInputVal)){
-            tempTotal+=totalInputVal;
+        if (!isNaN(totalInputVal)) {
+            tempTotal += totalInputVal;
         }
     });
-    if(affectedElement.tagName.toLowerCase() === "div"){
+    if (affectedElement.tagName.toLowerCase() === "div") {
         affectedElement.innerText = "$ " + tempTotal.toFixed(2);
     }
-    else{
+    else {
         affectedElement.value = "$ " + tempTotal.toFixed(2);
     }
 }
 
 addFormEvents = (model) => {
     let inputTextFieldsRequired = model.querySelectorAll(".inputTextRequired, .inputTextRequiredLarger, .inputNumberRequiredLarger");
-    Array.prototype.forEach.call(inputTextFieldsRequired, function(field){
-        field.addEventListener("focus", (e) =>
-        {
+    Array.prototype.forEach.call(inputTextFieldsRequired, function (field) {
+        field.addEventListener("focus", (e) => {
             let selectedLabel = e.target.nextElementSibling;
-            if(selectedLabel.className === "labelText" || selectedLabel.className === "labelTextSmall"){
-                if(selectedLabel.className === "labelText"){
+            if (selectedLabel.className === "labelText" || selectedLabel.className === "labelTextSmall") {
+                if (selectedLabel.className === "labelText") {
                     selectedLabel.className = "labelTextUp";
                 }
-                else{
-                    selectedLabel.className = "labelTextUp" 
+                else {
+                    selectedLabel.className = "labelTextUp"
                     selectedLabel.setAttribute("labelTextSmall", "yes");
                 }
             }
-            if(e.target.getAttribute("money") && e.target.value === ""){
+            if (e.target.getAttribute("money") && e.target.value === "") {
                 e.target.value = "$";
             }
         });
-    
-        field.addEventListener("blur", (e) => { 
-            let totalElement = document.getElementById("totalAmount");  
+
+        field.addEventListener("blur", (e) => {
+            let totalElement = document.getElementById("totalAmount");
             let totalPartElement = document.getElementById("partsPayment");
-            if(e.target.getAttribute("money") === "true" && e.target.value && !(e.target.value === "$")){
+            if (e.target.getAttribute("money") === "true" && e.target.value && !(e.target.value === "$")) {
                 e.target.value = `$ ${returnFromSplitFloat(e.target.value.split("$"))}`;
             }
-            else if(e.target.getAttribute("money") === "true" && e.target.value === "$"){
+            else if (e.target.getAttribute("money") === "true" && e.target.value === "$") {
                 e.target.value = "";
             }
-    
+
             let selectedLabel = e.target.nextElementSibling;
-    
-            if(selectedLabel.className === "labelTextUp" && (!field.value) && !(selectedLabel.getAttribute("labelTextSmall"))){
+
+            if (selectedLabel.className === "labelTextUp" && (!field.value) && !(selectedLabel.getAttribute("labelTextSmall"))) {
                 selectedLabel.className = "labelText";
             }
-            if(selectedLabel.getAttribute("labelTextSmall") && !(field.value)){
+            if (selectedLabel.getAttribute("labelTextSmall") && !(field.value)) {
                 selectedLabel.className = "labelTextSmall";
                 selectedLabel.removeAttribute("labelTextSmall");
             }
 
-            if(e.target.getAttribute("money")){
+            if (e.target.getAttribute("money")) {
                 let totalInputs = document.querySelectorAll('input[addToTotal = "true"]');
-                let totalParts = document.querySelectorAll('input[partPrice = "true');
-                if(e.target.getAttribute("partPrice") === "true"){
+                let totalParts = document.querySelectorAll('input[partPrice = "true"]');
+                if (e.target.getAttribute("partPrice") === "true") {
                     getTotals(totalParts, totalPartElement);
                 }
                 getTotals(totalInputs, totalElement);
@@ -86,35 +85,36 @@ addAddersEvent = () => {
         partInfoCounter++;
         let partInfoContainer = document.getElementById("partInfoContainer");
         let tempNode = document.createElement("div");
+        tempNode.setAttribute("data-part-count", `${partInfoCounter}`);
         tempNode.innerHTML = `<div class="row pt-4">
         <div class="col-1">
             <div class="formItem">
-                <input type="number" id="partQuantity${partInfoCounter}"
-                    class="inputNumberRequiredLarger" required="required">
+                <input type="number" id="partQuantity${partInfoCounter}" name="partQuantity${partInfoCounter}"
+                    class="inputNumberRequiredLarger" required>
                 <label for="partQuantity${partInfoCounter}" class="labelText">Qty.<span
                         class="requiredAsterisk">*</span></label>
             </div>
         </div>
         <div class="col-2">
             <div class="formItem">
-                <input type="text" id="partDescription${partInfoCounter}" class="inputTextRequiredLarger"
-                    required="required">
+                <input type="text" id="partDescription${partInfoCounter}" name="partDescription${partInfoCounter}" class="inputTextRequiredLarger"
+                    required>
                 <label for="partDescription${partInfoCounter}"
                     class="labelTextSmall">Unit/Condition</label>
             </div>
         </div>
         <div class="col-3">
             <div class="formItem">
-                <input type="text" id="partName${partInfoCounter}" class="inputTextRequiredLarger"
-                    required="required">
+                <input type="text" id="partName${partInfoCounter}" name="partName${partInfoCounter}" class="inputTextRequiredLarger"
+                    required>
                 <label for="partName${partInfoCounter}" class="labelText">Description /
-                    Name</label>
+                    Name<span class="requiredAsterisk">*</span></label>
             </div>
         </div>
         <div class="col-2">
             <div class="formItem">
-                <input type="text" id="partPrice${partInfoCounter}" partPrice="true" class="inputTextRequiredLarger"
-                    required="required" money="true">
+                <input type="text" id="partPrice${partInfoCounter}" name="partPrice${partInfoCounter}" partPrice="true" class="inputTextRequiredLarger"
+                    required money="true">
                 <label for="partPrice${partInfoCounter}" class="labelText">Price</label>
             </div>
         </div>
@@ -122,14 +122,14 @@ addAddersEvent = () => {
             <div class="row">
                 <div class="col-6 pe-0">
                     <div class="formItemRadio">
-                        <input type="radio" name="partMaterial${partInfoCounter}" value="true"
+                        <input type="radio" name="partMaterial${partInfoCounter}" value="U"
                             id="partMaterialU${partInfoCounter}">
                         <label for="partMaterial${partInfoCounter}" class="">U</label>
                     </div>
                 </div>
                 <div class="col-6 px-0">
                     <div class="formItemRadio">
-                        <input type="radio" name="partMaterial${partInfoCounter}" value="true"
+                        <input type="radio" name="partMaterial${partInfoCounter}" value="R"
                             id="partMaterialR${partInfoCounter}">
                         <label for="partMaterial${partInfoCounter}" class="">R</label>
                     </div>
@@ -137,15 +137,15 @@ addAddersEvent = () => {
                 <div class="w-100"></div>
                 <div class="col-6 pe-0">
                     <div class="formItemRadio">
-                        <input type="radio" name="partMaterial${partInfoCounter}" value="true"
+                        <input type="radio" name="partMaterial${partInfoCounter}" value="RC"
                             id="partMaterialRC${partInfoCounter}">
                         <label for="partMaterial${partInfoCounter}" class="">RC</label>
                     </div>
                 </div>
                 <div class="col-6 px-0">
                     <div class="formItemRadio">
-                        <input type="radio" name="partMaterial${partInfoCounter}" value="true"
-                            id="partMaterialNone${partInfoCounter}">
+                        <input type="radio" name="partMaterial${partInfoCounter}" value="N/A"
+                            id="partMaterialNone${partInfoCounter}" checked>
                         <label for="partMaterial${partInfoCounter}" class="">N/A</label>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ addAddersEvent = () => {
         </div>
         <div class="col-2 px-0">
             <div class="formItemCheck">
-                <input type="checkbox" id="partWarranty" name="partWarranty">
+                <input type="checkbox" id="partWarranty${partInfoCounter}" name="partWarranty${partInfoCounter}" value="true">
                 <label for="partWarranty">Warranty</label>
             </div>
         </div>
@@ -167,18 +167,19 @@ addAddersEvent = () => {
             </p>
         </div>
     </div>`;
-    addFormEvents(tempNode);
-    partInfoContainer.children[1].appendChild(tempNode);
+        addFormEvents(tempNode);
+        partInfoContainer.children[1].appendChild(tempNode);
     });
 
     document.getElementById("addRecommendationRow").addEventListener("click", () => {
         recommendationCounter++;
         let recommendationInfoContainer = document.getElementById("recommendationInfoContainer");
         let tempNode = document.createElement("div");
+        tempNode.setAttribute("data-recommendation-count", `${recommendationCounter}`);
         tempNode.innerHTML = `<div class="row pt-4">
                                 <div class="col-12">
                                     <div class="formItem">
-                                        <input type="text" id="recommendation${recommendationCounter}" class="inputTextRequiredLarger">
+                                        <input type="text" id="recommendation${recommendationCounter}" name="recommendation${recommendationCounter}" class="inputTextRequiredLarger">
                                         <label for="recommendation${recommendationCounter}"
                                             class="labelText">Recommendations</label>
                                     </div>
@@ -192,17 +193,18 @@ addAddersEvent = () => {
         hazardCounter++;
         let chargeHazardContainer = document.getElementById("chargeHazardContainer");
         let tempNode = document.createElement("div");
+        tempNode.setAttribute("data-hazard-count", `${hazardCounter}`);
         tempNode.innerHTML = `<div class="row pt-4">
                                 <div class="col-9">
                                     <div class="formItem">
-                                        <input type="text" id="hazardDescription${hazardCounter}" class="inputTextRequiredLarger">
+                                        <input type="text" id="hazardDescription${hazardCounter}" name="hazardDescription${hazardCounter}" class="inputTextRequiredLarger">
                                         <label for="hazardDescription${hazardCounter}"
                                             class="labelText">Hazardous Material Description</label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="formItem">
-                                        <input type="text" id="chargeHazard${hazardCounter}"
+                                        <input type="text" id="chargeHazard${hazardCounter}" name="chargeHazard${hazardCounter}"
                                             class="inputTextRequiredLarger" money="true">
                                         <label for="chargeHazard${hazardCounter}" class="labelText">Price</label>
                                     </div>
@@ -216,10 +218,11 @@ addAddersEvent = () => {
         guaranteeCounter++;
         let guaranteeContainer = document.getElementById("guaranteeContainer");
         let tempNode = document.createElement("div");
+        tempNode.setAttribute("data-guarantee-count", `${guaranteeCounter}`);
         tempNode.innerHTML = `<div class="row">
                                 <div class="col-12">
                                     <div class="formItemGuarantee">
-                                        <input type="text" id="guaranteedItem${guaranteeCounter}"
+                                        <input type="text" id="guaranteedItem${guaranteeCounter}" name="guaranteedItem${guaranteeCounter}"
                                             class="inputTextRequiredLarger">
                                         <label for="guaranteedItem${guaranteeCounter}"
                                             class="labelText"></label>
@@ -231,14 +234,14 @@ addAddersEvent = () => {
     });
 }
 
-document.querySelector("#archivedFileInput").addEventListener("change", (e) =>{
+document.querySelector("#archivedFileInput").addEventListener("change", (e) => {
     let svgArrow = document.querySelector("#archivedFileSubmit svg");
-    if(e.target.value){
+    if (e.target.value) {
         svgArrow.parentElement.classList.remove("disabledPointer");
         svgArrow.classList.replace("fileSubmitArrowDisabled", "fileSubmitArrow");
     }
-    else{
-        svgArrow.parentElement.classList.add("disabledPointer"); 
+    else {
+        svgArrow.parentElement.classList.add("disabledPointer");
         svgArrow.classList.replace("fileSubmitArrow", "fileSubmitArrowDisabled");
     }
 }, false);

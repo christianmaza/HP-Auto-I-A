@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/main.js" defer></script>
+    <script src="../static/js/formRequest.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
         rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>HP Auto I&A</title>
 </head>
 
@@ -67,7 +69,7 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <form>
+            <form action="{{ url_for('createInvoice') }}" method="POST">
                 <div class="row">
                     <section id="top" class="leftForm col-8 px-0">
                         <div class="row gx-0">
@@ -97,24 +99,24 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="yearCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="yearCar" name="yearCar"
+                                                    class="inputTextRequiredLarger" required>
                                                 <label for="yearCar" class="labelText">Year<span
                                                         class="requiredAsterisk">*</span></label>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="makeCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="makeCar" name="makeCar"
+                                                    class="inputTextRequiredLarger" required>
                                                 <label for="makeCar" class="labelText">Make<span
                                                         class="requiredAsterisk">*</span></label>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="modelCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="modelCar" name="modelCar"
+                                                    class="inputTextRequiredLarger" required>
                                                 <label for="modelCar" class="labelText">Model<span
                                                         class="requiredAsterisk">*</span></label>
                                             </div>
@@ -124,23 +126,23 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="motorCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="motorCar" name="motorCar"
+                                                    class="inputTextRequiredLarger" required>
                                                 <label for="motorCar" class="labelText">Motor #<span
                                                         class="requiredAsterisk">*</span></label>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="odometerCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="odometerCar" name="odometerCar"
+                                                    class="inputTextRequiredLarger">
                                                 <label for="odometerCar" class="labelText">Odometer</label>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="formItem">
-                                                <input type="text" id="licenseCar" class="inputTextRequiredLarger"
-                                                    required="required">
+                                                <input type="text" id="licenseCar" name="licenseCar"
+                                                    class="inputTextRequiredLarger">
                                                 <label for="licenseCar" class="labelText">License
                                                     No.</label>
                                             </div>
@@ -152,37 +154,36 @@
                                 <div class="formSpacerSeperator"></div>
                                 <section class="container ps-4 pe-2" id="parts">
                                     <h2 class="custInfoHeading ps-4 pb-1">Part Information</h2>
-                                    <div>
+                                    <div data-part-count="0">
                                         <div class="row pt-4">
                                             <div class="col-1">
                                                 <div class="formItem">
-                                                    <input type="number" id="partQuantity0"
-                                                        class="inputNumberRequiredLarger" required="required">
+                                                    <input type="number" id="partQuantity0" name="partQuantity0"
+                                                        class="inputNumberRequiredLarger" required>
                                                     <label for="partQuantity0" class="labelText">Qty.<span
                                                             class="requiredAsterisk">*</span></label>
                                                 </div>
                                             </div>
                                             <div class="col-2">
                                                 <div class="formItem">
-                                                    <input type="text" id="partDescription0"
-                                                        class="inputTextRequiredLarger" required="required">
+                                                    <input type="text" id="partDescription0" name="partDescription0"
+                                                        class="inputTextRequiredLarger">
                                                     <label for="partDescription0"
                                                         class="labelTextSmall">Unit/Condition</label>
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="formItem">
-                                                    <input type="text" id="partName0" class="inputTextRequiredLarger"
-                                                        required="required">
+                                                    <input type="text" id="partName0" name="partName0"
+                                                        class="inputTextRequiredLarger" required>
                                                     <label for="partName0" class="labelText">Description /
-                                                        Name</label>
+                                                        Name<span class="requiredAsterisk">*</span></label></label>
                                                 </div>
                                             </div>
                                             <div class="col-2">
                                                 <div class="formItem">
-                                                    <input type="text" id="partPrice0" partPrice="true"
-                                                        class="inputTextRequiredLarger" required="required"
-                                                        money="true">
+                                                    <input type="text" id="partPrice0" name="partPrice0"
+                                                        partPrice="true" class="inputTextRequiredLarger" money="true">
                                                     <label for="partPrice0" class="labelText">Price</label>
                                                 </div>
                                             </div>
@@ -190,14 +191,14 @@
                                                 <div class="row">
                                                     <div class="col-6 pe-0">
                                                         <div class="formItemRadio">
-                                                            <input type="radio" name="partMaterial0" value="true"
+                                                            <input type="radio" name="partMaterial0" value="U"
                                                                 id="partMaterialU0">
                                                             <label for="partMaterial0" class="">U</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 px-0">
                                                         <div class="formItemRadio">
-                                                            <input type="radio" name="partMaterial0" value="true"
+                                                            <input type="radio" name="partMaterial0" value="R"
                                                                 id="partMaterialR0">
                                                             <label for="partMaterial0" class="">R</label>
                                                         </div>
@@ -205,15 +206,15 @@
                                                     <div class="w-100"></div>
                                                     <div class="col-6 pe-0">
                                                         <div class="formItemRadio">
-                                                            <input type="radio" name="partMaterial0" value="true"
+                                                            <input type="radio" name="partMaterial0" value="RC"
                                                                 id="partMaterialRC0">
                                                             <label for="partMaterial0" class="">RC</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 px-0">
                                                         <div class="formItemRadio">
-                                                            <input type="radio" name="partMaterial0" value="true"
-                                                                id="partMaterialNone0">
+                                                            <input type="radio" name="partMaterial0" value="N/A"
+                                                                id="partMaterialNone0" checked>
                                                             <label for="partMaterial0" class="">N/A</label>
                                                         </div>
                                                     </div>
@@ -221,8 +222,9 @@
                                             </div>
                                             <div class="col-2 px-0">
                                                 <div class="formItemCheck">
-                                                    <input type="checkbox" id="partWarranty" name="partWarranty">
-                                                    <label for="partWarranty">Warranty</label>
+                                                    <input type="checkbox" id="partWarranty0" name="partWarranty0"
+                                                        value="true">
+                                                    <label for="partWarranty0">Warranty</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -256,11 +258,12 @@
                             <div class="formSpacerSeperator"></div>
                             <div class="container pe-0">
                                 <h2 class="custInfoHeading ps-4 pb-1">Mechanic's Recommendations</h2>
-                                <div>
+                                <div data-recommendation-count="0">
                                     <div class="row pt-4">
                                         <div class="col-12">
                                             <div class="formItem">
-                                                <input type="text" id="recommendation0" class="inputTextRequiredLarger">
+                                                <input type="text" id="recommendation0" name="recommendation0"
+                                                    class="inputTextRequiredLarger">
                                                 <label for="recommendation0" class="labelText">Recommendations</label>
                                             </div>
                                         </div>
@@ -282,7 +285,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="formItem">
-                                            <input type="text" id="recommendationEstCost"
+                                            <input type="text" id="recommendationEstCost" name="recommendationEstCost"
                                                 class="inputTextRequiredLarger" money="true">
                                             <label for="recommendationEstCost" class="labelText">Estimated
                                                 Cost</label>
@@ -290,7 +293,8 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="formItem">
-                                            <input type="text" id="recommendationEstCharge" money="true"
+                                            <input type="text" id="recommendationEstCharge"
+                                                name="recommendationEstCharge" money="true"
                                                 class="inputTextRequiredLarger">
                                             <label for="recommendationEstCharge" class="labelText">Estimated
                                                 Charge</label>
@@ -299,7 +303,7 @@
                                     <div class="col-3">
                                         <div class="formItem">
                                             <input type="text" id="recommendationBasisCharge"
-                                                class="inputTextRequiredLarger">
+                                                name="recommendationBasisCharge" class="inputTextRequiredLarger">
                                             <label for="recommendationBasisCharge" class="labelText">Basis
                                                 for
                                                 Charge</label>
@@ -313,11 +317,11 @@
                             <div class="container pe-0">
                                 <h2 class="custInfoHeading ps-4 pb-1">Charge for Hazardous or Other Waste Removal
                                 </h2>
-                                <div>
+                                <div data-hazard-count="0">
                                     <div class="row pt-4">
                                         <div class="col-9">
                                             <div class="formItem">
-                                                <input type="text" id="hazardDescription0"
+                                                <input type="text" id="hazardDescription0" name="hazardDescription0"
                                                     class="inputTextRequiredLarger">
                                                 <label for="hazardDescription0" class="labelText">Hazardous
                                                     Material Description</label>
@@ -325,8 +329,8 @@
                                         </div>
                                         <div class="col-2">
                                             <div class="formItem">
-                                                <input type="text" id="chargeHazard0" class="inputTextRequiredLarger"
-                                                    money="true">
+                                                <input type="text" id="chargeHazard0" name="chargeHazard0"
+                                                    class="inputTextRequiredLarger" money="true">
                                                 <label for="chargeHazard0" class="labelText">Price</label>
                                             </div>
                                         </div>
@@ -354,44 +358,49 @@
                         <section class="container pt-5" id="customerCustomer">
                             <h2 class="custInfoHeading ps-4 pb-5">Customer Information</h2>
                             <div class="formItem">
-                                <input type="text" id="firstNameForm" class="inputTextRequired" required="required">
+                                <input type="text" id="firstNameForm" name="firstNameForm" class="inputTextRequired"
+                                    required>
                                 <label for="firstNameForm" class="labelText">First Name<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="LastNameForm" class="inputTextRequired" required="required">
+                                <input type="text" id="lastNameForm" name="lastNameForm" class="inputTextRequired"
+                                    required>
                                 <label for="LastNameForm" class="labelText">Last Name<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formSpacerSmaller"></div>
                             <div class="formItem">
-                                <input type="text" id="streetAddress" class="inputTextRequired" required="required">
-                                <label for="streetAddress" class="labelText">Street Addres</label>
+                                <input type="text" id="streetAddress" name="streetAddress" class="inputTextRequired"
+                                    required>
+                                <label for="streetAddress" class="labelText">Street Addres<span
+                                        class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="streetAddress2" class="inputTextRequired" required="required">
+                                <input type="text" id="streetAddress2" name="streetAddress2" class="inputTextRequired">
                                 <label for="streetAddress2" class="labelText">Apartment, Suite, Unit,
                                     etc.</label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="city" class="inputTextRequired" required="required">
-                                <label for="city" class="labelText">City</label>
+                                <input type="text" id="city" name="city" class="inputTextRequired" required>
+                                <label for="city" class="labelText">City<span class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="state" class="inputTextRequired" required="required">
-                                <label for="state" class="labelText">State</label>
+                                <input type="text" id="state" name="state" class="inputTextRequired" required>
+                                <label for="state" class="labelText">State<span
+                                        class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="zip" class="inputTextRequired" required="required">
-                                <label for="zip" class="labelText">Zip</label>
+                                <input type="text" id="zip" name="zip" class="inputTextRequired" required>
+                                <label for="zip" class="labelText">Zip<span class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formSpacerSmaller"></div>
                             <div class="formItem">
-                                <input type="text" id="telephone1" class="inputTextRequired" required="required">
+                                <input type="text" id="telephone1" name="telephone1" class="inputTextRequired">
                                 <label for="telephone1" class="labelText">Phone #1</label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="telephone2" class="inputTextRequired" required="required">
+                                <input type="text" id="telephone2" name="telephone2" class="inputTextRequired">
                                 <label for="telephone2" class="labelText">Phone #2</label>
                             </div>
                         </section>
@@ -402,13 +411,13 @@
                                     <p class="estimateAcknowledgement">
                                         PLEASE READ CAREFULLY, CHECK ONE OF THE STATEMENTS BELOW, AND SIGN:
                                         I UNDERSTAND THAT, UNDER STATE LAW, I AM ENTITLED TO A WRITTEN ESTIMATE,
-                                        INCLUDING A COMPLETION DATE, IF MY FINAL BILL WILL BE EXCEEDED $100.
+                                        INCLUDING A COMPLETION DATE, IF MY FINAL BILL WILL EXCEED $100.
                                         ($50 in
                                         MD)
                                     </p>
                                     <div class="pb-2">
                                         <input type="radio" id="requestWrittenEstimate" name="estimateChoice"
-                                            class="estimateAckCheck">
+                                            class="estimateAckCheck" value="requestWrittenEstimate">
                                         <label for="requestWrittenEstimate" class="estimateAckLabel">
                                             I REQUEST A WRITTEN ESTIMATE. THE FINAL BILL MAY NOT EXCEED THIS
                                             ESTIMATE
@@ -417,7 +426,7 @@
                                     </div>
                                     <div class="pb-2">
                                         <input type="radio" id="noRequestWrittenEstimate" name="estimateChoice"
-                                            class="estimateAckCheck">
+                                            class="estimateAckCheck" value="noRequestWrittenEstimate">
                                         <label for="noRequestWrittenEstimate" class="estimateAckLabel">
                                             I DO NOT REQUEST A WRITTEN ESTIMATE AS LONG AS THE REPAIR COSTS DO
                                             NOT
@@ -429,7 +438,7 @@
                                         </label>
                                     </div>
                                     <input type="radio" id="requestNoEstimate" name="estimateChoice"
-                                        class="estimateAckCheck">
+                                        class="estimateAckCheck" value="requestNoEstimate" checked>
                                     <label for="requestNoEstimate" class="estimateAckLabel">
                                         I DO NOT REQUEST A WRITTEN ESTIMATE.
                                     </label>
@@ -443,8 +452,9 @@
                                         You are entitled by law to return all of the parts replaced, except for
                                         those which there is a core charge, unless you agree otherwise by initialing
                                         the following: <span><input type="text" id="noReturnInitial"
-                                                class="inputTextRequiredLarger"><label for="noReturnInitial"
-                                                class="labelText"></label></span> I do not desire the return
+                                                name="noReturnInitial" class="inputTextRequiredLarger"><label
+                                                for="noReturnInitial" class="labelText"></label></span> I do not desire
+                                        the return
                                         of any of the parts that are replaced during the authorized repairs.
                                     </p>
                                     <p class="variousAcknowledgement">
@@ -455,8 +465,9 @@
                                         mechanic's lien is hereby acknowledged on the above vehicle to secure the
                                         amount of the repairs thereto. If I cancel repairs prior to their completion
                                         for any reason, a tear-down and reassembly fee of <span><input type="text"
-                                                id="teardownFee" money="true" class="inputTextRequiredLarger"><label
-                                                for="teardownFee" class="labelText"></label></span> will be
+                                                id="teardownFee" name="teardownFee" money="true"
+                                                class="inputTextRequiredLarger"><label for="teardownFee"
+                                                class="labelText"></label></span> will be
                                         applied.
                                     </p>
                                 </div>
@@ -472,12 +483,14 @@
                                     </p>
                                     <div class="col-12" id="guaranteeContainer">
                                         <h3 class="variousAcknowledgement">GUARANTEED ITEM(S):</h3>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="formItemGuarantee">
-                                                    <input type="text" id="guaranteedItem0"
-                                                        class="inputTextRequiredLarger">
-                                                    <label for="guaranteedItem0" class="labelText"></label>
+                                        <div data-guarantee-count="0">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="formItemGuarantee">
+                                                        <input type="text" id="guaranteedItem0" name="guaranteedItem0"
+                                                            class="inputTextRequiredLarger">
+                                                        <label for="guaranteedItem0" class="labelText"></label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -501,7 +514,7 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="formItemGuarantee">
-                                                <input type="text" id="guaranteedItemsTime"
+                                                <input type="text" id="guaranteedItemsTime" name="guaranteedItemsTime"
                                                     class="inputTextRequiredLarger">
                                                 <label for="guaranteedItemsTime" class="labelText">Time</label>
                                             </div>
@@ -509,7 +522,7 @@
                                         <div class="col-6">
                                             <div class="formItemGuarantee">
                                                 <input type="number" id="guaranteedItemsMileage"
-                                                    class="inputTextRequiredLarger">
+                                                    name="guaranteedItemsMileage" class="inputTextRequiredLarger">
                                                 <label for="guaranteedItemsMileage" class="labelText">Mileage</label>
                                             </div>
                                         </div>
@@ -529,21 +542,22 @@
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="paymentCheck" name="paymentMethods"
+                                    <input type="radio" id="paymentCheck" name="paymentMethods" value="paymentCheck"
                                         class="estimateAckCheck">
                                     <label for="paymentCheck" class="estimateAckLabel">CHECK</label>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="paymentCharge" name="paymentMethods"
+                                    <input type="radio" id="paymentCharge" name="paymentMethods" value="paymentCharge"
                                         class="estimateAckCheck">
                                     <label for="paymentCharge" class="estimateAckLabel">CHARGE</label>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="paymentCash" name="paymentMethods" class="estimateAckCheck">
+                                    <input type="radio" id="paymentCash" name="paymentMethods" value="paymentCash"
+                                        class="estimateAckCheck">
                                     <label for="paymentCash" class="estimateAckLabel">CASH</label>
                                 </div>
                             </div>
@@ -555,21 +569,31 @@
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="laborFlatRate" name="laborRate" class="estimateAckCheck">
+                                    <input type="radio" id="laborFlatRate" name="laborRate" value="laborFlatRate"
+                                        class="estimateAckCheck">
                                     <label for="laborFlatRate" class="estimateAckLabel">FLAT RATE</label>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="laborHourly" name="laborRate" class="estimateAckCheck">
+                                    <input type="radio" id="laborHourly" name="laborRate" value="laborHourly"
+                                        class="estimateAckCheck">
                                     <label for="laborHourly" class="estimateAckLabel">HOURLY</label>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="formItemCheck">
-                                    <input type="radio" id="laborBoth" name="laborRate" class="estimateAckCheck">
+                                    <input type="radio" id="laborBoth" name="laborRate" value="laborBoth"
+                                        class="estimateAckCheck">
                                     <label for="laborBoth" class="estimateAckLabel">BOTH</label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="mt-5"></div>
+                        <div class="row pe-0">
+                            <div class="col-6"></div>
+                            <div class="col-4">
+                                <input type="submit" id="createInvoice" value="CREATE INVOICE" class="text-center">
                             </div>
                         </div>
                     </div>
@@ -581,8 +605,8 @@
                                         LABOR ONLY
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="laborPayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="laborPayment" name="laborPayment" money="true"
+                                            addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -592,8 +616,8 @@
                                         PARTS
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="partsPayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="partsPayment" name="partsPayment" money="true"
+                                            addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -603,8 +627,8 @@
                                         ACCESSORIES
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="accessoriesPayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="accessoriesPayment" name="accessoriesPayment"
+                                            money="true" addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -614,8 +638,8 @@
                                         GAS, OIL, & GREASE
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="lubePayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="lubePayment" name="lubePayment" money="true"
+                                            addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -625,8 +649,8 @@
                                         MISC. MERCHANDISE
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="miscMerchandisePayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="miscMerchandisePayment" name="miscMerchandisePayment"
+                                            money="true" addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -636,8 +660,8 @@
                                         SUBLET REPAIRS
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="subletRepairsPayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="subletRepairsPayment" name="subletRepairsPayment"
+                                            money="true" addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -647,8 +671,8 @@
                                         STORAGE FEE
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="storagePayment" money="true" addToTotal="true"
-                                            class="inputTextRequiredLarger">
+                                        <input type="text" id="storagePayment" name="storagePayment" money="true"
+                                            addToTotal="true" class="inputTextRequiredLarger">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
@@ -658,7 +682,8 @@
                                         TAX
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" id="taxPayment" money="true" class="inputTextRequiredLarger">
+                                        <input type="text" id="taxPayment" name="taxPayment" money="true"
+                                            class="inputTextRequiredLarger" addToTotal="true">
                                         <label class="d-none"></label>
                                     </div>
                                 </div>
