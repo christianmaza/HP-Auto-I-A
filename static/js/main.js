@@ -97,8 +97,7 @@ addAddersEvent = () => {
         </div>
         <div class="col-2">
             <div class="formItem">
-                <input type="text" id="partDescription${partInfoCounter}" name="partDescription${partInfoCounter}" class="inputTextRequiredLarger"
-                    required>
+                <input type="text" id="partDescription${partInfoCounter}" name="partDescription${partInfoCounter}" class="inputTextRequiredLarger">
                 <label for="partDescription${partInfoCounter}"
                     class="labelTextSmall">Unit/Condition</label>
             </div>
@@ -204,9 +203,9 @@ addAddersEvent = () => {
                                 </div>
                                 <div class="col-2">
                                     <div class="formItem">
-                                        <input type="text" id="chargeHazard${hazardCounter}" name="chargeHazard${hazardCounter}"
+                                        <input type="text" id="hazardCharge${hazardCounter}" name="hazardCharge${hazardCounter}"
                                             class="inputTextRequiredLarger" money="true">
-                                        <label for="chargeHazard${hazardCounter}" class="labelText">Price</label>
+                                        <label for="hazardCharge${hazardCounter}" class="labelText">Price</label>
                                     </div>
                                 </div>
                             </div>`;

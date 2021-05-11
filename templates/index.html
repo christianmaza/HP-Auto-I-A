@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/main.js" defer></script>
-    <script src="../static/js/formRequest.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -329,9 +328,9 @@
                                         </div>
                                         <div class="col-2">
                                             <div class="formItem">
-                                                <input type="text" id="chargeHazard0" name="chargeHazard0"
+                                                <input type="text" id="hazardCharge0" name="hazardCharge0"
                                                     class="inputTextRequiredLarger" money="true">
-                                                <label for="chargeHazard0" class="labelText">Price</label>
+                                                <label for="hazardCharge0" class="labelText">Price</label>
                                             </div>
                                         </div>
                                     </div>
@@ -358,50 +357,50 @@
                         <section class="container pt-5" id="customerCustomer">
                             <h2 class="custInfoHeading ps-4 pb-5">Customer Information</h2>
                             <div class="formItem">
-                                <input type="text" id="firstNameForm" name="firstNameForm" class="inputTextRequired"
+                                <input type="text" id="customerFirstNameForm" name="customerFirstNameForm" class="inputTextRequired"
                                     required>
                                 <label for="firstNameForm" class="labelText">First Name<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="lastNameForm" name="lastNameForm" class="inputTextRequired"
+                                <input type="text" id="customerLastNameForm" name="customerLastNameForm" class="inputTextRequired"
                                     required>
                                 <label for="LastNameForm" class="labelText">Last Name<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formSpacerSmaller"></div>
                             <div class="formItem">
-                                <input type="text" id="streetAddress" name="streetAddress" class="inputTextRequired"
+                                <input type="text" id="customerStreetAddress" name="customerStreetAddress" class="inputTextRequired"
                                     required>
                                 <label for="streetAddress" class="labelText">Street Addres<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="streetAddress2" name="streetAddress2" class="inputTextRequired">
+                                <input type="text" id="customerStreetAddress2" name="customerStreetAddress2" class="inputTextRequired">
                                 <label for="streetAddress2" class="labelText">Apartment, Suite, Unit,
                                     etc.</label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="city" name="city" class="inputTextRequired" required>
+                                <input type="text" id="customerCity" name="customerCity" class="inputTextRequired" required>
                                 <label for="city" class="labelText">City<span class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="state" name="state" class="inputTextRequired" required>
+                                <input type="text" id="customerState" name="customerState" class="inputTextRequired" required>
                                 <label for="state" class="labelText">State<span
                                         class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="zip" name="zip" class="inputTextRequired" required>
+                                <input type="text" id="customerZip" name="customerZip" class="inputTextRequired" required>
                                 <label for="zip" class="labelText">Zip<span class="requiredAsterisk">*</span></label>
                             </div>
                             <div class="formSpacerSmaller"></div>
                             <div class="formItem">
-                                <input type="text" id="telephone1" name="telephone1" class="inputTextRequired">
-                                <label for="telephone1" class="labelText">Phone #1</label>
+                                <input type="text" id="customerTelephone1" name="customerTelephone1" class="inputTextRequired">
+                                <label for="telephone1" class="labelText">Work Phone</label>
                             </div>
                             <div class="formItem">
-                                <input type="text" id="telephone2" name="telephone2" class="inputTextRequired">
-                                <label for="telephone2" class="labelText">Phone #2</label>
+                                <input type="text" id="customerTelephone2" name="customerTelephone2" class="inputTextRequired">
+                                <label for="telephone2" class="labelText">Cell Phone</label>
                             </div>
                         </section>
                         <div class="formSpacerSeperatorSmaller"></div>
@@ -430,7 +429,7 @@
                                         <label for="noRequestWrittenEstimate" class="estimateAckLabel">
                                             I DO NOT REQUEST A WRITTEN ESTIMATE AS LONG AS THE REPAIR COSTS DO
                                             NOT
-                                            EXCEED <span><input type="text" id="noRequestWrittenEstimateCharge"
+                                            EXCEED <span><input type="text" id="noRequestWrittenEstimateCharge" name="noRequestWrittenEstimateCharge"
                                                     money="true" class="inputTextRequiredLarger"><label
                                                     for="noRequestWrittenEstimateCharge"
                                                     class="labelText"></label></span>. THE SHOP MAY NOT
@@ -557,7 +556,7 @@
                             <div class="col-3">
                                 <div class="formItemCheck">
                                     <input type="radio" id="paymentCash" name="paymentMethods" value="paymentCash"
-                                        class="estimateAckCheck">
+                                        class="estimateAckCheck" checked>
                                     <label for="paymentCash" class="estimateAckLabel">CASH</label>
                                 </div>
                             </div>
@@ -570,7 +569,7 @@
                             <div class="col-3">
                                 <div class="formItemCheck">
                                     <input type="radio" id="laborFlatRate" name="laborRate" value="laborFlatRate"
-                                        class="estimateAckCheck">
+                                        class="estimateAckCheck" checked>
                                     <label for="laborFlatRate" class="estimateAckLabel">FLAT RATE</label>
                                 </div>
                             </div>
@@ -692,9 +691,7 @@
                                     <div class="totalLabel grand col-6">
                                         TOTAL
                                     </div>
-                                    <div class="col-4 totalLabel grand" id="totalAmount">
-                                        $ 0.00
-                                    </div>
+                                    <input class="col-4 totalLabel grand" id="totalAmount" name="totalAmount" value="$ 0.00" readonly>
                                 </div>
                             </div>
                         </div>
