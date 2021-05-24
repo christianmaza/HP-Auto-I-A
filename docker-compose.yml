@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  web:
+    container_name: hpautoiaprod
+    restart: always
+    build:
+      context: ./services/web
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./services/web:/usr/src/hpautoia/
+    command: gunicorn --bind 0.0.0.0:5000 application:app
+    expose:
+      - 5000
+  nginx:
+    container_name: hpautoianginx
+    restart: always
+    build:
+      context: ./services/nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
